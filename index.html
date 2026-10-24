@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Startup Kingdoms Health — Build the Future of Healthcare</title>
+<meta name="description" content="Startup Kingdoms Health helps healthcare startups build, launch and scale on an intelligent operating system for patient engagement, workflows and hospital operations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbfaf6; --surface:#ffffff; --ink:#10201c; --muted:#5a6b66; --line:#e4e8e2;
+    --brand:#0f6b57; --brand-deep:#0a4a3d; --accent:#e8a33d; --tint:#e9f3ee; --dark:#0c1f1a;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img,svg{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.12;letter-spacing:-.01em}
+  h1{font-size:clamp(2.4rem,6vw,4.4rem)}
+  h2{font-size:clamp(1.8rem,3.6vw,2.7rem)}
+  h3{font-size:1.2rem}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:14px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;font-weight:600;font-size:.95rem;border:1.5px solid transparent;transition:.2s;cursor:pointer}
+  .btn-primary{background:var(--brand);color:#fff}
+  .btn-primary:hover{background:var(--brand-deep);transform:translateY(-1px)}
+  .btn-ghost{border-color:var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:#fff}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:50;background:rgba(251,250,246,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:1.2rem}
+  .logo-mark{width:34px;height:34px}
+  .logo small{font-family:'Inter';font-weight:500;color:var(--brand);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;display:block;margin-top:-4px}
+  nav ul{display:flex;gap:28px;list-style:none;font-size:.93rem;font-weight:500;color:var(--muted)}
+  nav ul a:hover{color:var(--brand)}
+  .nav-cta{display:flex;gap:10px;align-items:center}
+  .menu-btn{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer;color:var(--ink)}
+
+  /* hero */
+  .hero{padding:84px 0 72px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;right:-180px;top:-120px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,var(--tint),transparent 68%);z-index:-1}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  .hero p.lead{font-size:1.15rem;color:var(--muted);max-width:540px;margin:22px 0 34px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .store{display:flex;gap:12px;margin-top:34px;align-items:center;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+  .store a{padding:9px 16px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);font-weight:600;color:var(--ink);font-size:.85rem}
+  .store a:hover{border-color:var(--brand)}
+  .hero-card{background:var(--dark);color:#e8f2ee;border-radius:28px;padding:28px;box-shadow:0 30px 60px -25px rgba(10,74,61,.5)}
+  .hero-card h4{font-family:'Inter';font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#8fc9b7;margin-bottom:18px}
+  .flow{display:grid;gap:12px}
+  .flow div{display:flex;gap:14px;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px 16px;font-size:.93rem}
+  .flow b{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--accent);color:#2b1a00;font-size:.82rem;flex:none}
+
+  /* ticker */
+  .ticker{border-block:1px solid var(--line);background:var(--surface);padding:20px 0;overflow:hidden}
+  .ticker-track{display:flex;gap:56px;width:max-content;animation:slide 32s linear infinite;font-weight:600;color:var(--muted);white-space:nowrap}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  section{padding:92px 0}
+  .head{max-width:680px;margin-bottom:52px}
+  .head p{color:var(--muted);margin-top:14px;font-size:1.05rem}
+
+  /* kingdoms */
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:.25s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(15,107,87,.45);border-color:#bfd9cf}
+  .ico{width:46px;height:46px;border-radius:13px;background:var(--tint);display:grid;place-items:center;margin-bottom:18px;color:var(--brand)}
+  .card p{color:var(--muted);font-size:.93rem;margin-top:8px}
+
+  /* platform */
+  .platform{background:var(--dark);color:#e8f2ee}
+  .platform .eyebrow{color:#8fc9b7}
+  .platform .head p{color:#a9c4ba}
+  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .pcol{border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:28px;background:rgba(255,255,255,.035)}
+  .pcol h3{color:#fff;margin-bottom:16px}
+  .pcol ul{list-style:none;display:grid;gap:12px}
+  .pcol li{font-size:.93rem;color:#b9d2c9;padding-left:22px;position:relative}
+  .pcol li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .pcol li strong{color:#fff;font-weight:600}
+
+  /* journey */
+  .journey{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px;position:relative}
+  .step .n{font-family:'Fraunces';font-size:3rem;color:var(--tint);-webkit-text-stroke:1.5px var(--brand);position:absolute;right:24px;top:14px;opacity:.55}
+  .step p{color:var(--muted);margin-top:10px;font-size:.95rem}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .checks{list-style:none;display:grid;gap:14px;margin-top:24px}
+  .checks li{display:flex;gap:12px;color:var(--muted)}
+  .checks li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;background:var(--tint);color:var(--brand);display:grid;place-items:center;font-weight:700;font-size:.8rem;margin-top:2px}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 24px 50px -30px rgba(0,0,0,.25)}
+  .panel .row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px dashed var(--line);font-size:.92rem}
+  .panel .row:last-child{border:0}
+  .tag{font-size:.74rem;font-weight:600;padding:4px 11px;border-radius:999px;background:var(--tint);color:var(--brand)}
+  .tag.warn{background:#fbefd7;color:#8a5a00}
+
+  /* trust */
+  .trust{background:var(--tint)}
+  .badges{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+  .badge{background:var(--surface);border:1px solid #cfe2d9;border-radius:14px;padding:16px 22px;font-weight:600;font-size:.92rem}
+  .badge span{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+
+  /* cta + contact */
+  .cta{background:linear-gradient(135deg,var(--brand-deep),var(--brand));color:#fff;border-radius:32px;padding:64px 48px;text-align:center}
+  .cta p{max-width:560px;margin:16px auto 30px;color:#d3ebe3}
+  .cta .btn-primary{background:var(--accent);color:#2b1a00}
+  .cta .btn-primary:hover{background:#f2b550}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .info{display:grid;gap:22px;margin-top:28px}
+  .info div{display:flex;gap:16px}
+  .info .ico{margin:0;flex:none}
+  .info div.t{display:block}
+  .info h3{font-family:'Inter';font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  .info a:hover{color:var(--brand)}
+  form{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:32px;display:grid;gap:16px}
+  label{font-size:.85rem;font-weight:600;display:grid;gap:6px}
+  input,select,textarea{font:inherit;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--brand)}
+  textarea{min-height:110px;resize:vertical}
+
+  footer{background:var(--dark);color:#a9c4ba;padding:64px 0 28px;font-size:.9rem}
+  .fgrid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
+  footer h4{color:#fff;font-family:'Inter';font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+  footer ul{list-style:none;display:grid;gap:9px}
+  footer a:hover{color:#fff}
+  .fbottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;font-size:.82rem}
+  .socials{display:flex;gap:14px;margin-top:16px}
+
+
+  /* legal */
+  .legal{display:none;padding:72px 0;background:var(--surface);border-top:1px solid var(--line)}
+  .legal.open{display:block}
+  .legal .doc{max-width:780px}
+  .legal h2{margin-bottom:8px}
+  .legal .meta{color:var(--muted);font-size:.88rem;margin-bottom:32px}
+  .legal h3{font-size:1.1rem;margin:28px 0 8px}
+  .legal p,.legal li{color:#33443f;font-size:.96rem;margin-bottom:10px}
+  .legal ul{padding-left:22px;margin-bottom:10px}
+  .legal .back{display:inline-block;margin-top:28px;font-weight:600;color:var(--brand)}
+  .legal .note{background:var(--tint);border-radius:12px;padding:14px 18px;font-size:.9rem;margin-bottom:24px}
+
+  @media(max-width:980px){
+    .cards{grid-template-columns:repeat(2,1fr)}
+    .pgrid,.journey{grid-template-columns:1fr}
+    .hero-grid,.split,.contact-grid{grid-template-columns:1fr;gap:40px}
+    .fgrid{grid-template-columns:1fr 1fr}
+    nav ul,.nav-cta .btn-ghost{display:none}
+    .menu-btn{display:block}
+    nav.open ul{display:flex;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:var(--bg);padding:20px;border-bottom:1px solid var(--line);gap:16px}
+  }
+  @media(max-width:560px){
+    .cards,.fgrid{grid-template-columns:1fr}
+    section{padding:68px 0}
+    .cta{padding:44px 24px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="Startup Kingdoms Health home">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="11" fill="#0f6b57"/><path d="M8 28V15l6 5 6-9 6 9 6-5v13z" fill="#e8a33d"/><path d="M20 31v-6m-3 3h6" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <span>Startup Kingdoms<small>Health</small></span>
+    </a>
+    <nav id="nav">
+      <ul>
+        <li><a href="#kingdoms">Kingdoms</a></li>
+        <li><a href="#platform">Platform</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#trust">Trust</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="#contact">Get in Touch</a>
+      <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Where healthcare startups build their kingdom</span>
+        <h1>The intelligent operating system for healthcare startups.</h1>
+        <p class="lead">Every patient interaction. Every request. Every follow-up. One intelligent system — so your clinic, hospital or health venture can launch faster and grow with confidence.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Get in Touch →</a>
+          <a class="btn btn-ghost" href="#platform">Explore the platform</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Patient journey preview">
+        <h4>One connected patient journey</h4>
+        <div class="flow">
+          <div><b>1</b> Enquiry arrives on WhatsApp, web or walk-in</div>
+          <div><b>2</b> Appointment booked on the WhatsApp and web</div>
+          <div><b>3</b> Front desk, OPD and departments stay in sync</div>
+          <div><b>4</b> Follow-ups and loyalty keep patients returning</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Department Ticketing</span><span>Patient Experience</span><span>Appointment Booking</span><span>OPD to IP Conversion</span><span>AI Agents</span><span>Workflow Builder</span><span>Patient Loyalty</span><span>Claims &amp; Revenue Recovery</span>
+      <span>Department Ticketing</span><span>Patient Experience</span><span>Appointment Booking</span><span>OPD to IP Conversion</span><span>AI Agents</span><span>Workflow Builder</span><span>Patient Loyalty</span><span>Claims &amp; Revenue Recovery</span>
+    </div>
+  </div>
+
+  <section id="kingdoms">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">The Kingdoms</span>
+        <h2>Four realms every health startup needs to rule.</h2>
+        <p>From the first enquiry to the final follow-up, Startup Kingdoms Health gives you the building blocks to run each part of care.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7h18M3 12h18M3 17h10"/></svg></div>
+          <h3>Department Ticketing</h3>
+          <p>Manage multiple departments and track everyone's work efficiently using ticketing.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-9-9a5 5 0 019-3 5 5 0 019 3c-2 4.6-9 9-9 9z"/></svg></div>
+          <h3>Patient Experience</h3>
+          <p>Deliver a world-class patient experience, before, during and after every visit.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></div>
+          <h3>Appointment Booking</h3>
+          <p>Seamless appointment booking on the WhatsApp and web, visible instantly at the front desk.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
+          <h3>OPD to IP Conversion</h3>
+          <p>Increase OPD-to-IP conversion and improve patient retention.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="platform" class="platform">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">The Platform</span>
+        <h2>The modern engine for high-velocity healthcare operations.</h2>
+        <p>Digital interactions, dynamic workflows and operational intelligence, connected into one unified system.</p>
+      </div>
+      <div class="pgrid">
+        <div class="pcol">
+          <h3>Workspace</h3>
+          <ul>
+            <li><strong>Staff &amp; Access Management</strong> — teams, roles and access from one place</li>
+            <li><strong>Internal Views</strong> — the views every department needs to work</li>
+            <li><strong>Tags &amp; Segmentation</strong> — organise patients and operational data</li>
+          </ul>
+        </div>
+        <div class="pcol">
+          <h3>Workflow Orchestration</h3>
+          <ul>
+            <li><strong>Workflow Builder</strong> — automate healthcare workflows without complexity</li>
+            <li><strong>AI Agents</strong> — handle conversations, tasks and routine patient interactions</li>
+            <li><strong>Triggers &amp; Actions</strong> — start the right action when something happens</li>
+            <li><strong>Integrations</strong> — connect the systems your teams already use</li>
+          </ul>
+        </div>
+        <div class="pcol">
+          <h3>Intelligence</h3>
+          <ul>
+            <li><strong>Patient Intelligence</strong> — behaviour, needs and engagement</li>
+            <li><strong>Operational Intelligence</strong> — care operations in real time</li>
+            <li><strong>Healthcare Intelligence (MIS)</strong> — management-level visibility from hospital data</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="journey">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Patient Journey</span>
+        <h2>A complete patient experience in one place.</h2>
+        <p>Make every first interaction effortless, keep every step connected, and keep care moving forward.</p>
+      </div>
+      <div class="journey">
+        <div class="step"><span class="n">01</span><h3>Before the visit</h3><p>Make every first interaction effortless — enquiries, bookings and reminders on the channels patients already use.</p></div>
+        <div class="step"><span class="n">02</span><h3>During the visit</h3><p>Keep every step connected across front desk, OPD, IPD and departments, with a clean discharge.</p></div>
+        <div class="step"><span class="n">03</span><h3>After the visit</h3><p>Keep care moving forward with follow-ups, loyalty and feedback that bring patients back.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Hospital Operations &amp; Revenue</span>
+        <h2>From the front desk to the final claim.</h2>
+        <ul class="checks">
+          <li>Front Desk &amp; OPD — registration, queues and outpatient flow on the day</li>
+          <li>IPD &amp; Discharge — admissions, ward rounds and a clean discharge</li>
+          <li>Financial Operations — billing, payments and the daily revenue work</li>
+          <li>Corporate &amp; TPA Desk — approvals, claims and corporate patients, tracked</li>
+          <li>Claims &amp; Revenue Recovery — deductions, rejections and what is still owed</li>
+        </ul>
+      </div>
+      <div class="panel" aria-label="Illustrative appointments view">
+        <div class="row"><strong>Appointments</strong><span class="tag">Illustrative preview</span></div>
+        <div class="row"><span>Cardiology consultation</span><span class="tag">Checked-in</span></div>
+        <div class="row"><span>Neurology follow-up</span><span class="tag">Checked-in</span></div>
+        <div class="row"><span>Gastroenterology review</span><span class="tag warn">Scheduled</span></div>
+        <div class="row"><span>General medicine</span><span class="tag warn">Scheduled</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trust" class="trust">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Trust &amp; Privacy</span>
+        <h2>Built for the privacy healthcare demands.</h2>
+        <p>Healthcare runs on trust. Startup Kingdoms Health is built around role-based access, careful handling of patient information and clear accountability across every team.</p>
+      </div>
+      </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta">
+        <h2>Ready to build your healthcare kingdom?</h2>
+        <p>See how Startup Kingdoms Health can connect your patients, teams and operations in one intelligent system.</p>
+        <a class="btn btn-primary" href="#contact">Get in Touch →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:0">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h2>Let's talk.</h2>
+        <div class="info">
+          <div>
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <div class="t"><h3>Registered Office</h3>Startup Kingdoms<br>Kundan-Kushal Ngr, FL No. F-14, Behind Koel Complex,<br>Bopodi, Pune, Maharashtra – 411020, India</div>
+          </div>
+          <div>
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <div class="t"><h3>Email</h3><a href="mailto:admin@startupkingdoms.com">admin@startupkingdoms.com</a></div>
+          </div>
+          <div>
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-4-7.5L21 3l-1.5 4A9 9 0 0121 12z"/></svg></span>
+            <div class="t"><h3>WhatsApp</h3>+91 86056 96122</div>
+          </div>
+        </div>
+      </div>
+      <form id="contactForm">
+        <label>Your name<input type="text" name="name" required placeholder="Full name"></label>
+        <label>Email<input type="email" name="email" required placeholder="you@company.com"></label>
+        <label>I am a<select name="type"><option>Clinic</option><option>Hospital</option><option>Healthcare startup</option><option>Other</option></select></label>
+        <label>Message<textarea name="msg" placeholder="Tell us about what you're building"></textarea></label>
+        <button class="btn btn-primary" type="submit">Send via email →</button>
+      </form>
+    </div>
+  </section>
+
+<section id="terms" class="legal"><div class="wrap doc">
+  <h2>Terms &amp; Conditions</h2><p class="meta">Effective 23 October 2026 · Last updated 23 October 2026</p>
+  <h3>1. Acceptance</h3>
+  <p>These Terms &amp; Conditions govern your use of the Startup Kingdoms Health website and related services (the "Services"), provided by Startup Kingdoms ("we", "us", "our"). By using the Services you agree to these Terms. If you use them for an organisation, you confirm you are authorised to bind it.</p>
+  <h3>2. The Services</h3>
+  <p>Startup Kingdoms Health provides technology and advisory support for healthcare startups, clinics and hospitals, including patient engagement, appointment, workflow and operations tooling. Features may vary and may change over time.</p>
+  <h3>3. Not medical advice</h3>
+  <p>We are a technology and business-support provider, not a healthcare provider. Nothing on this website or in the Services is medical advice, diagnosis or treatment, and it must not be used for emergencies. Healthcare organisations remain solely responsible for clinical decisions, patient safety and the accuracy of clinical records.</p>
+  <h3>4. Your responsibilities</h3>
+  <ul>
+    <li>Provide accurate information and keep your account details secure.</li>
+    <li>Obtain all consents and notices required by law before sharing patient or personal data with us.</li>
+    <li>Use the Services lawfully and not to harass, defraud, infringe rights, or disrupt systems.</li>
+    <li>Review any automated or AI-generated output before relying on it for important decisions.</li>
+  </ul>
+  <h3>5. Fees and payment</h3>
+  <p>Fees, billing cycles and taxes (including GST) are set out in the applicable proposal, order form or invoice. Unless stated otherwise, fees are in Indian Rupees and are non-refundable except where required by law or agreed in writing.</p>
+  <h3>6. Intellectual property</h3>
+  <p>We and our licensors own the website, software, designs, branding and documentation. You keep ownership of your own data and content. We grant you a limited, non-exclusive, non-transferable right to use the Services while your engagement is active.</p>
+  <h3>7. Third-party services</h3>
+  <p>The Services may rely on or link to third-party tools such as messaging, payment or cloud providers. Those are governed by their own terms, and we are not responsible for their availability or practices.</p>
+  <h3>8. Confidentiality</h3>
+  <p>Each party will protect the other's non-public information with reasonable care and use it only for the purpose of the engagement, except where disclosure is required by law.</p>
+  <h3>9. Disclaimers</h3>
+  <p>To the extent permitted by law, the Services are provided "as is" and "as available". We do not guarantee uninterrupted or error-free operation, or that outputs will be accurate or suitable for a particular purpose.</p>
+  <h3>10. Limitation of liability</h3>
+  <p>To the extent permitted by law, we are not liable for indirect, incidental or consequential losses, or loss of profit, revenue or data. Our total liability for any claim is limited to the fees you paid us for the relevant Services in the 12 months before the claim arose. Nothing limits liability that cannot lawfully be limited.</p>
+  <h3>11. Suspension and termination</h3>
+  <p>We may suspend or end access if you breach these Terms, if required by law, or to protect the security of the Services. You may stop using the Services at any time. Clauses that by nature should survive termination will continue to apply.</p>
+  <h3>12. Changes</h3>
+  <p>We may update these Terms from time to time. The updated version will be posted here with a new date, and continued use means you accept it.</p>
+  <h3>13. Governing law</h3>
+  <p>These Terms are governed by the laws of India. Subject to applicable law, the courts at Pune, Maharashtra have jurisdiction over disputes.</p>
+  <h3>14. Contact</h3>
+  <p>Startup Kingdoms, Kundan-Kushal Ngr, FL No. F-14, Behind Koel Complex, Bopodi, Pune, Maharashtra – 411020, India. Email: <a href="mailto:admin@startupkingdoms.com">admin@startupkingdoms.com</a></p>
+  <a class="back" href="#top">← Back to site</a>
+</div></section>
+
+<section id="privacy" class="legal"><div class="wrap doc">
+  <h2>Privacy Policy</h2><p class="meta">Effective 23 October 2026 · Last updated 23 October 2026</p>
+  <p class="note">This policy explains how Startup Kingdoms handles personal data collected through this website and our Services.</p>
+  <h3>1. Who we are</h3>
+  <p>Startup Kingdoms is the entity responsible for the personal data collected through this website. Where we process patient or customer data on behalf of a hospital, clinic or other client, that client decides why and how the data is used and we act on its instructions.</p>
+  <h3>2. Data we collect</h3>
+  <ul>
+    <li><strong>Contact details</strong> — name, email, phone number and organisation, when you contact us or use the enquiry form.</li>
+    <li><strong>Usage data</strong> — basic technical information such as browser type and pages visited.</li>
+    <li><strong>Client-provided data</strong> — information that clients upload or instruct us to process, which may include patient information.</li>
+  </ul>
+  <h3>3. How we use data</h3>
+  <ul>
+    <li>To respond to enquiries and provide, support and improve the Services.</li>
+    <li>To manage accounts, billing and communications.</li>
+    <li>To keep the Services secure and prevent misuse.</li>
+    <li>To meet legal and regulatory obligations.</li>
+  </ul>
+  <h3>4. Health information</h3>
+  <p>Health information is sensitive. We handle it only for the purposes our clients instruct, limit access to people who need it, and do not sell it or use it for advertising.</p>
+  <h3>5. Sharing</h3>
+  <p>We share data only with service providers that help us operate the Services (such as hosting, communication and payment providers), with our clients where relevant, and with authorities when the law requires. We do not sell personal data.</p>
+  <h3>6. Security and retention</h3>
+  <p>We use reasonable technical and organisational safeguards, including access controls. We keep data only as long as needed for the purpose it was collected, for our contract with a client, or as the law requires, and then delete or anonymise it.</p>
+  <h3>7. Your rights</h3>
+  <p>Subject to applicable law, including India's Digital Personal Data Protection Act, 2023, you may ask to access, correct or erase your personal data, withdraw consent, or raise a grievance. Requests about hospital records may need to go to the hospital that holds them. Write to us at the email below and we will respond within a reasonable time.</p>
+  <h3>8. Children</h3>
+  <p>Our website is not directed at children. Information about minors is processed only through healthcare organisations that hold the required parental or guardian consent.</p>
+  <h3>9. Changes</h3>
+  <p>We may update this policy and will post the new version here with its date.</p>
+  <h3>10. Contact and grievances</h3>
+  <p>Startup Kingdoms, Kundan-Kushal Ngr, FL No. F-14, Behind Koel Complex, Bopodi, Pune, Maharashtra – 411020, India. Email: <a href="mailto:admin@startupkingdoms.com">admin@startupkingdoms.com</a></p>
+  <a class="back" href="#top">← Back to site</a>
+</div></section>
+
+<section id="cookies" class="legal"><div class="wrap doc">
+  <h2>Cookie Policy</h2><p class="meta">Effective 23 October 2026 · Last updated 23 October 2026</p>
+  <p>This website uses only what is needed to work properly. Fonts may be loaded from Google Fonts, which can receive your IP address and browser details when the page loads. We do not use advertising or cross-site tracking cookies on this page.</p>
+  <p>If we add analytics or similar tools in future, we will update this policy and ask for consent where the law requires. You can block or delete cookies in your browser settings; the site will still work.</p>
+  <p>Questions: <a href="mailto:admin@startupkingdoms.com">admin@startupkingdoms.com</a></p>
+  <a class="back" href="#top">← Back to site</a>
+</div></section>
+
+<section id="disclaimer" class="legal"><div class="wrap doc">
+  <h2>Medical &amp; General Disclaimer</h2><p class="meta">Effective 23 October 2026 · Last updated 23 October 2026</p>
+  <p>Startup Kingdoms is not a hospital, clinic or medical practitioner. Content on this website is for general information about our technology and business services only and is not medical advice, diagnosis or treatment.</p>
+  <p>Always seek advice from a qualified healthcare professional for medical concerns. In an emergency, contact your local emergency services or go to the nearest hospital immediately.</p>
+  <p>Product descriptions, screenshots and previews on this site are illustrative. Features and availability may differ by engagement and may change. Third-party names, where mentioned, belong to their respective owners.</p>
+  <a class="back" href="#top">← Back to site</a>
+</div></section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="logo" style="color:#fff"><svg class="logo-mark" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="11" fill="#0f6b57"/><path d="M8 28V15l6 5 6-9 6 9 6-5v13z" fill="#e8a33d"/></svg><span>Startup Kingdoms</span></div>
+        <p style="margin-top:14px;max-width:280px">AI-powered infrastructure that adapts to the way your healthcare business works.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#platform">Workspace</a></li>
+          <li><a href="#platform">Workflow Orchestration</a></li>
+          <li><a href="#platform">Intelligence</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="#journey">Patient Lifecycle</a></li>
+          <li><a href="#kingdoms">Hospital Operations</a></li>
+          <li><a href="#kingdoms">Revenue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#contact">Get in Touch</a></li>
+          <li><a href="#terms">Terms &amp; Conditions</a></li>
+          <li><a href="#privacy">Privacy Policy</a></li>
+          <li><a href="#cookies">Cookie Policy</a></li>
+          <li><a href="#disclaimer">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span>© Startup Kingdoms 2026. All rights reserved.</span>
+      <span>Kundan-Kushal Ngr, FL No. F-14, Behind Koel Complex, Bopodi, Pune, Maharashtra – 411020, India</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var f = new FormData(this);
+    var body = 'Name: '+f.get('name')+'\nEmail: '+f.get('email')+'\nI am a: '+f.get('type')+'\n\n'+f.get('msg');
+    window.location.href = 'mailto:admin@startupkingdoms.com?subject='+encodeURIComponent('Startup Kingdoms Health enquiry')+'&body='+encodeURIComponent(body);
+  });
+  document.querySelectorAll('#nav a').forEach(function(a){
+    a.addEventListener('click', function(){ document.getElementById('nav').classList.remove('open'); });
+  });
+
+  (function(){
+    var legals=[].slice.call(document.querySelectorAll('.legal'));
+    function closeAll(){ legals.forEach(function(l){ l.classList.remove('open'); }); }
+    document.addEventListener('click', function(e){
+      var a=e.target.closest('a[href^="#"]');
+      if(!a) return;
+      var id=a.getAttribute('href').slice(1);
+      e.preventDefault();
+      var nav=document.getElementById('nav'); if(nav) nav.classList.remove('open');
+      var el=id? document.getElementById(id):null;
+      closeAll();
+      if(el && el.classList.contains('legal')){
+        el.classList.add('open');
+        el.scrollIntoView({behavior:'smooth',block:'start'});
+      } else if(el){
+        el.scrollIntoView({behavior:'smooth',block:'start'});
+      } else {
+        window.scrollTo({top:0,behavior:'smooth'});
+      }
+    });
+  })();
+</script>
+</body>
+</html>
